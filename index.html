@@ -1,51 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hope Donations</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Alerts App</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="navbar">
-       <div class="logo">
-            <h1>Hope Donations</h1>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="donate.html">Donate</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-
-    <section class="hero">
-        <h1>Welcome to Hope Donations</h1>
-        <p>Your support can make a difference in the lives of those in need.</p>
-        <a href="donate.html" class="btn">Donate Now</a>
-     </section>
-
-    <section class="impact">
-        <div class="impact-card">
-            <h3>Total Donations</h3>
-            <p class="number">0</p>
-        </div>
-        <div class="impact-card">
-            <h3 >Number of Donors</h3>
-            <p class="number">0</p>
-        </div>
-        <div class="impact-card">
-            <h3 >Projects Funded</h3>
-            <p class="number">0</p>
-        </div>
-       
-    </section>
-
-    <footer class="footer">
-        <p>&copy; 2026 Hope Donations. All rights reserved.</p>
-        <p>Built to make a difference.</p>
-    </footer>
-    
+  <h1>Weather Alerts App</h1>
+  <input type="text" id="state-input" placeholder="Enter state abbreviation">
+  <button id="fetch-alerts">Get Weather Alerts</button>
+  <div id="alerts-display"></div>
+  <div id="error-message" class="hidden"></div>
+  <script src="./index.js"></script>
 </body>
-
 </html>
