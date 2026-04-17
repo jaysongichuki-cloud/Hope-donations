@@ -1,6 +1,6 @@
 body {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
-    background-color: #F5F7FA;
+    background-color: #FEFEE3;
     color: #1e1e1e;
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ body {
 }
 
 .navbar {
-    background-color: #2563eb;
+    background-color: #4C956C;
     padding :5px 30px;
     display:flex;
     justify-content: space-between;
@@ -20,7 +20,7 @@ body {
 }
 
 .logo {
-    color:#f59e0b;
+    color: white;
     font-size: 20px;
     font-weight: bold;
     display: flex;
@@ -46,7 +46,7 @@ body {
 
 .hero h1 {
     font-size:40px;
-    color:#2563eb;
+    color:#2C6E49;
     margin-bottom: 10px;
 }
 
@@ -95,7 +95,7 @@ body {
 }
 
 .footer {
-    background-color: #2563eb;
+    background-color: #4C956C;
     color: white;
     text-align: center;
     padding: 20px;
@@ -111,4 +111,84 @@ body {
     border-radius: 10px;
 }
 
+.about h1 {
+     font-size:40px;
+    color:#2C6E49;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.about-card {
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    color: #555;
+}
+
+.about-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+.impact-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+.about-card p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.contact {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact-form button {
+    background-color: #2C6E49;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #f59e0b;
+    transform: scale(1.05);
+}
+
+.contact h1 {
+    font-size:40px;
+    color:#4C956C;
+    margin-bottom: 10px;
+}
+
+.impact-card h3 {
+    margin-top: 15px;
+    font-size: 20px;
+    color: #333;
+}
 
