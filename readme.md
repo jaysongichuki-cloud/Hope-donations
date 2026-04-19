@@ -37,3 +37,5 @@ INSTALLATION
 Clone the repository:
 git clone https://github.com/jaysongichuki-cloud/Hope-Donations.git
 
+Author
+Jayson Mwangi
