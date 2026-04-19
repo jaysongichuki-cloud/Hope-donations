@@ -6,9 +6,13 @@ let donations = [];
 const cards=document.querySelectorAll('.donate-card');
 const selectedText = document.getElementById('selected-cause');
 const amountInput = document.getElementById('amount');
+const phoneInput = document.getElementById('phone');
 const conversionResult = document.getElementById('conversion-result');
 
 const totalDisplay = document.getElementById("total-donations")
+const donateBtn = document.querySelector('.donation-form button');
+const statusText = document.getElementById('payment-status');
+const donorList = document.getElementById("donor-list");
 
 
 
@@ -19,14 +23,29 @@ cards.forEach(card => {
     });
 });
 
-const donateBtn = document.querySelector('.donation-form button');
-const statusText = document.getElementById('payment-status');
+function addDonorToList(name,amount,cause){
+    const li = document.createElement("li");
+    li.textContent = `${name} - KES ${amount} - ${cause}`;
+    donorList.appendChild(li);
+}
+
+
+
+
 
 donateBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     const amount = amountInput.value;
-    const phone= document.getElementById("phone").value
+    const phone= phoneInput.value;
+
+
+    const selectedCause= selectedText.textContent.replace("Selected Cause: ","");
+
+    if(!amount || !phone || selectedCause === "Selected Cause: None"){
+        statusText.textContent = "Please fill in all fields and select a cause.";
+        return;
+    }
 
     fetch(`https://api.exchangerate-api.com/v4/latest/KES`)
         .then(response => response.json())
@@ -37,7 +56,6 @@ donateBtn.addEventListener('click', (e) => {
 
             conversionResult.textContent = `Converted Amount: $${converted.toFixed(2)}`;
 
-            const selectedCause= document.getElementById("selected-cause").textContent;
             const donation = {
                 cause: selectedCause,
                 amount: amount,
@@ -56,6 +74,9 @@ donations.push(donation);
 },0)
 
 totalDisplay.textContent = "Total Donations:" + total +"KES";
+
+
+addDonorToList("You", amount, selectedCause);
     }, 3000);
 });
 });
@@ -63,27 +84,7 @@ totalDisplay.textContent = "Total Donations:" + total +"KES";
 
 
 
-const donorList = document.getElementById("donor-list");
 
-fetch("https://jsonplaceholder.typicode.com/users")
-.then(response => response.json())
-.then(users=>{
-    users.slice(0,5).forEach(user=>{
-        const li = document.createElement("li");
-        li.textContent=user.name;
 
-        donorList.appendChild(li)
-    });
-});
 
-function addDonorToList(name,amount,cause){
-    const li = document.createElement("li");
-    li.textContent = `${name} - KES ${amount} - ${cause}`;
-    donorList.appendChild(li);
-}
 
-addDonorToList(
-    phone,
-    amount,
-    selectedCause.replace("Selected Cause: ","")
-);
