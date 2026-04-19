@@ -24,6 +24,7 @@ cards.forEach(card => {
 });
 
 function addDonorToList(name,amount,cause){
+    console.log("Adding donor to list:", name, amount, cause);
     const li = document.createElement("li");
     li.textContent = `${name} - KES ${amount} - ${cause}`;
     donorList.appendChild(li);
@@ -73,7 +74,7 @@ donations.push(donation);
     return sum + Number(d.amount);
 },0)
 
-totalDisplay.textContent = "Total Donations:" + total +"KES";
+totalDisplay.textContent = "Total Donations:" + total;
 
 
 addDonorToList("You", amount, selectedCause);
