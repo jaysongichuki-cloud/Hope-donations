@@ -2,7 +2,7 @@ console.log("Js is running");
 console.log(document.getElementById("phone"));
 console.log(document.getElementById("donor-list"));
 
-let donations = [];
+
 const cards=document.querySelectorAll('.donate-card');
 const selectedText = document.getElementById('selected-cause');
 const amountInput = document.getElementById('amount');
@@ -16,6 +16,7 @@ const donorList = document.getElementById("donor-list");
 const homeTotal = document.getElementById("home-total");
 const homeDonors = document.getElementById("home-donors");
 const homeProjects = document.getElementById("home-projects");
+let donations=JSON.parse(localStorage.getItem("donations")) || [];
 
 
 
@@ -31,6 +32,26 @@ function addDonorToList(name,amount,cause){
     const li = document.createElement("li");
     li.textContent = `${name} - KES ${amount} - ${cause}`;
     donorList.appendChild(li);
+}
+
+function updateStats(){
+    const total=donations.reduce((sum,d)=>{
+        return sum + Number(d.amount);
+    },0)
+
+    const donorCount=donations.length;
+
+    const causes = new Set(donations.map(d=>d.cause));
+
+    if(homeTotal) {
+        homeTotal.textContent = total;
+    }
+    if(homeDonors) {
+        homeDonors.textContent = donorCount;
+    }
+    if(homeProjects) {
+        homeProjects.textContent = causes.size;
+    }
 }
 
 
@@ -67,6 +88,7 @@ donateBtn.addEventListener('click', (e) => {
             };
 
 donations.push(donation);
+localStorage.setItem("donations", JSON.stringify(donations));
     
     statusText.textContent = "Processing your M-Pesa payment...";
 
@@ -79,31 +101,20 @@ donations.push(donation);
 
 totalDisplay.textContent = "Total Donations:" + total;
 
-function updateStats(){
-    const total=donations.reduce((sum,d)=>{
-        return sum + Number(d.amount);
-    },0)
-
-    const donorCount=donations.length;
-
-    const causes = new Set(donations.map(d=>d.cause));
-
-    homeTotal.textContent = total;
-    homeDonors.textContent = donorCount;
-    homeProjects.textContent = causes.size;
-}
 
 
 
 addDonorToList("You", amount, selectedCause);
+updateStats();
+}, 3000);
+});
+});
 
 updateStats();
-    }, 3000);
+
+donations.forEach(d => {
+    addDonorToList("Donor", d.amount, d.cause);
 });
-});
-
-
-
 
 
 
