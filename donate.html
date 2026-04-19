@@ -48,16 +48,24 @@
     <section class="donation-form">
         <h2>Make a Donation</h2>
         <input type="text" placeholder="Your Name">
-        <input type="number" placeholder="Donation Amount">
-        
-        <select>
+        <input type="number" id="amount" placeholder="Donation Amount">
+        <input type="number" id="phone" placeholder="Phone Number (for M-Pesa)">
+        <p id="total-donations"></p>
+        <p id="payment-status"></p>
+        <p id="conversion-result"></p>
+        <!-- <select>
             <option>Select Payment Method</option>
             <option>Credit Card</option>
             <option>PayPal</option>
-            <option>M-pesa</option>
-        </select>
+            
+        </select> -->
         <button class="btn">Donate Now</button>
+
+        
     </section>
+
+    <h3>Recent Donors</h3>
+        <ul id="donor-list"></ul>
 
 
     <footer class="footer">

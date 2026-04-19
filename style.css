@@ -88,7 +88,7 @@ body {
     text-align: center;
 }
 
-.number {
+#home-total, #home-donors, #home-projects {
     font-size: 24px;
     color: #10b981;
    font-weight: bold;
