@@ -13,6 +13,9 @@ const totalDisplay = document.getElementById("total-donations")
 const donateBtn = document.querySelector('.donation-form button');
 const statusText = document.getElementById('payment-status');
 const donorList = document.getElementById("donor-list");
+const homeTotal = document.getElementById("home-total");
+const homeDonors = document.getElementById("home-donors");
+const homeProjects = document.getElementById("home-projects");
 
 
 
@@ -76,8 +79,25 @@ donations.push(donation);
 
 totalDisplay.textContent = "Total Donations:" + total;
 
+function updateStats(){
+    const total=donations.reduce((sum,d)=>{
+        return sum + Number(d.amount);
+    },0)
+
+    const donorCount=donations.length;
+
+    const causes = new Set(donations.map(d=>d.cause));
+
+    homeTotal.textContent = total;
+    homeDonors.textContent = donorCount;
+    homeProjects.textContent = causes.size;
+}
+
+
 
 addDonorToList("You", amount, selectedCause);
+
+updateStats();
     }, 3000);
 });
 });
