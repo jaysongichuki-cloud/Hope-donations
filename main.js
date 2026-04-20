@@ -14,6 +14,8 @@ const donorList = document.getElementById("donor-list");
 const homeTotal = document.getElementById("home-total");
 const homeDonors = document.getElementById("home-donors");
 const homeProjects = document.getElementById("home-projects");
+const contactForm = document.querySelector('.contact-form');
+const contactStatus = document.getElementById('contact-status');
 
 
 
@@ -65,6 +67,7 @@ donateBtn.addEventListener('click', (e) => {
         return;
     }
 
+    
     fetch(`https://api.exchangerate-api.com/v4/latest/KES`)
         .then(response => response.json())
         .then(data => {
@@ -106,5 +109,25 @@ addDonorToList("You", amount, selectedCause);
 }
 
 
+if (contactForm) {
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    if(!name || !email || !message){
+        contactStatus.textContent = "Please fill in all fields.";
+        return;
+    }
+
+    const fullMessage = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
+    const encodedMessage = encodeURIComponent(fullMessage);
+    const whatsappURL = `https://wa.me/254701744757?text=${encodedMessage}`;
+
+    window.open(whatsappURL, '_blank');
+    contactStatus.textContent = "Redirecting to WhatsApp...";
+});
+}
 
