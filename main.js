@@ -1,6 +1,6 @@
 
 
-let donations = [];
+let donations = JSON.parse(localStorage.getItem("donations")) || [];
 const cards=document.querySelectorAll('.donate-card');
 const selectedText = document.getElementById('selected-cause');
 const amountInput = document.getElementById('amount');
@@ -29,6 +29,7 @@ function addDonorToList(name,amount,cause){
 
 
 if(donorList) {
+    
     donorList.innerHTML = "";
     donations.forEach(d => {
     addDonorToList("Donor", d.amount, d.cause);
