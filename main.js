@@ -1,6 +1,6 @@
 
 
-
+let donations = [];
 const cards=document.querySelectorAll('.donate-card');
 const selectedText = document.getElementById('selected-cause');
 const amountInput = document.getElementById('amount');
